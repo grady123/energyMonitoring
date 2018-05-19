@@ -1,0 +1,211 @@
+<div class="fixed-warp unit_two basis energy_one" id="energyOne">
+  <!--头-->
+  <div class="fixed-top">
+    <div class="fixed-top">
+      <div class="mobile-top-nag">
+        <div class="nag-button"><a href="/index/index.html"><i class="iconfont icon-fanhui go1" ></i></a><a href="/"><i class="iconfont icon-guanbi "></i></a></div>
+        能耗监控</div>
+    </div>
+  </div>
+  <div class="fixed">
+      <div class="nav">
+        <div>
+        {{name}}   <i class="fr iconfont icon-icon-copy pl20" @click="selChange()"></i>
+        </div>
+      </div>
+      <div class="column " :class="{'wrap':buttonNavigation===1}">
+        <span @click="column('all')"  :class="{'active':undertakeType ==='all'}">全部</span>
+        <span @click="column('undertaketype_1')"  :class="{'active':undertakeType ==='undertaketype_1'}">物业成本</span>
+        <span @click="column('undertaketype_3')"  :class="{'active':undertakeType ==='undertaketype_3'}">共有收益</span>
+        <span @click="column('undertaketype_2')"  :class="{'active':undertakeType ==='undertaketype_2'}">公共水电</span>
+        <div class="fr qu-weight iconfont icon-xiala1" v-show="buttonNavigation!==1" ></div>
+      </div>
+      <!-- Swiper -->
+      <div class=" swiper-container" id="energySwper">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide" style=" height:4.5rem!important; ">
+                    <div class="subnav" style=" width:95%" >
+                        <div class="top">
+                            <p ><span v-show="buttonNavigation===1" class="fl ml70">{{date2}}</span>本期水量（<span v-if="orgLevel<4">千</span>吨）</p>
+                            <p >{{sumMonth|type}}<i v-if="iconfont!==0" class="iconfont icon-up" :class="{'icon-down':iconfont===2}"></i></p>
+                            <p class="pr30">截止日期&nbsp&nbsp&nbsp{{date}}</p>
+                        </div>
+                        <div class="down">
+                            <div>
+                                <p>{{sumYear|type}}&nbsp</p>
+                                <p>本年累计水量</p>
+                            </div>
+                            <div>
+                                <p v-if="title===0">{{sumLastYearMonth|type}}&nbsp</p>
+                                <p v-if="title===1">{{sumLastMonth|type}}&nbsp</p>
+                                <p v-if="title===2">{{avgYear|type}}&nbsp</p>
+                                <p v-if="title===0">上年同期水量</p>
+                                <p v-if="title===1">上期水量</p>
+                                <p v-if="title===2">年平均水量</p>
+                            </div>
+                            <div>
+                                <p v-if="title===0">{{compare2|compare}}&nbsp<i v-if="compare2!==0" class="iconfont icon-Decline " :class="{'rotate':compare2<0}"></i> </p>
+                                <p v-if="title===1">{{compare1|compare}}&nbsp<i v-if="compare1!==0" class="iconfont icon-Decline " :class="{'rotate':compare1<0}"></i> </p>
+                                <p v-if="title===2">{{compare3|compare}}&nbsp<i v-if="compare3!==0" class="iconfont icon-Decline " :class="{'rotate':compare3<0}"></i> </p>
+                                <p v-if="title===0">同比%</p>
+                                <p v-if="title===1">环比%</p>
+                                <p v-if="title===2">年平均比%</p>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+              <div class="swiper-slide" style=" height:4.5rem!important; " >
+                  <div class="subnav" style=" width:95%" >
+                      <div class="top two">
+                          <p ><span v-show="buttonNavigation===1" class="fl ml70">{{date2}}</span>本期电量（<span v-if="orgLevel<4">万</span>度）</p>
+                          <p >{{sumMonth|type}}<i v-if="iconfont!==0" class="iconfont icon-up " :class="{'icon-down':iconfont===2}"></i></p>
+                          <p class="pr30">截止日期&nbsp&nbsp&nbsp{{date}}</p>
+                      </div>
+                      <div class="down two">
+                          <div>
+                              <p>{{sumYear|type}}&nbsp</p>
+                              <p>本年累计用电量</p>
+                          </div>
+                          <div>
+                              <p v-if="title===0">{{sumLastYearMonth|type}}&nbsp</p>
+                              <p v-if="title===1">{{sumLastMonth|type}}&nbsp</p>
+                              <p v-if="title===2">{{avgYear|type}}&nbsp</p>
+                              <p v-if="title===0">上年同期电量</p>
+                              <p v-if="title===1">上期电量</p>
+                              <p v-if="title===2">年平均电量</p>
+                          </div>
+                          <div>
+                              <p v-if="title===0">{{compare2|compare}}&nbsp<i v-if="compare2!==0" class="iconfont icon-Decline " :class="{'rotate':compare2<0}"></i> </p>
+                              <p v-if="title===1">{{compare1|compare}}&nbsp<i v-if="compare1!==0" class="iconfont icon-Decline " :class="{'rotate':compare1<0}"></i> </p>
+                              <p v-if="title===2">{{compare3|compare}}&nbsp<i v-if="compare3!==0" class="iconfont icon-Decline " :class="{'rotate':compare3<0}"></i> </p>
+                              <p v-if="title===0">同比%</p>
+                              <p v-if="title===1">环比%</p>
+                              <p v-if="title===2">年平均比%</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination" id="energyPagination"></div>
+      </div>
+      <div class="submenu">
+          <span :class="{'active':title===0,'w33':buttonNavigation===0||buttonNavigation===2}" @click="submenu(0)">同比</span>
+          <span :class="{'active':title===1,'w33':buttonNavigation===0||buttonNavigation===2}" @click="submenu(1)">环比</span>
+          <span :class="{'active':title===2,'w33':buttonNavigation===0||buttonNavigation===2}" @click="submenu(2)">平均比</span>
+          <div class="fr  qu-year iconfont icon-xiala1" v-show="buttonNavigation===1"></div>
+      </div>
+      <div class="msg" v-if="buttonNavigation===0||buttonNavigation===2" >
+          <span>以【<span v-if="title===0">上年同期用量</span><span v-if="title===1">上期用量</span><span v-if="title===2">年平均用量</span>】的【 {{multiplying}} 】倍来预警查询</span>
+          <div class="fr" @click="yj_click()" >{{multiplying}}<i class="iconfont icon-shezhigray"></i></div>
+      </div>
+      <div   class="pay_nhCharts-box" v-show="buttonNavigation===1" >
+          <div  class="charts1"  id="unitNhChartsTwo" ></div>
+      </div>
+      <!-- 列表-->
+      <div  v-show="buttonNavigation===0||buttonNavigation===2" >
+          <div class="clearfix  pt30  pb20 mb0 light-bg text-center bbDDDEE3" >
+             <div class="fl rela W-20  b0 c-000 fs26 3395FF"   >{{toggle}}</div>
+              <div class="fl rela W-20 b0 c-000 fs26"    >年度累计</div>
+              <div class="fl rela W-20  b0 c-000 fs26"  >本期用量</div>
+              <div class="fl rela W-25  b0 c-000 fs26" v-if="title===0" >上年同期用量</div>
+              <div class="fl rela W-25  b0 c-000 fs26" v-if="title===1" >上期用量</div>
+              <div class="fl rela W-25  b0 c-000 fs26" v-if="title===2" >年平均用量</div>
+              <div class="fl rela W-15 b0 c-000 fs26"  v-if="title===0" >同比</div>
+              <div class="fl rela W-15 b0 c-000 fs26"  v-if="title===1" >环比</div>
+              <div class="fl rela W-15 b0 c-000 fs26"  v-if="title===2" >平均比</div>
+          </div>
+          <ul >
+              <li class=" h70 lh70 text-center bt0 bl0 br0 bbDDDEE3 m0 setting" v-for="(item,index) in listdata2"  :key="index" >
+                  <div class="fl lh70 W-20 c-959 fs26 c-3395FF unit-font"  v-if="orgLevel!==4" @click.stop="meter(item.unitId,3,item.unitName)">{{item.unitName}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26 c-3395FF unit-font"  v-if="orgLevel===4" @click.stop="meter(item.meterId,3,item.meterCode)">{{item.meterCode|ICR}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" >{{item.sumYear|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" >{{item.sumMonth|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===0">{{item.sumLastYearMonth|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===1">{{item.sumLastMonth|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===2">{{item.avgYear|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===0"><i  v-if="item.compare2!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare2<0}" ></i>{{item.compare2|compare}}%</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===1"><i  v-if="item.compare1!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare1<0}" ></i>{{item.compare1|compare}}%</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===2"><i  v-if="item.compare3!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare3<0}" ></i>{{item.compare3|compare}}%</div>
+              </li>
+              <li class=" h70 lh70 text-center bt0 bl0 br0 bbDDDEE3 m0 " v-for="(item,index) in listdata"  :key="index" v-if="index < bottomBtnData.len">
+                  <div class="fl lh70 W-20 c-959 fs26 c-3395FF unit-font"  v-if="orgLevel!==4" @click.stop="meter(item.unitId,3,item.unitName)">{{item.unitName}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26 c-3395FF unit-font"  v-if="orgLevel===4" @click.stop="meter(item.meterId,3,item.meterCode)">{{item.meterCode|ICR}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" >{{item.sumYear|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" >{{item.sumMonth|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===0">{{item.sumLastYearMonth|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===1">{{item.sumLastMonth|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===2">{{item.avgYear|type}}</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===0"><i  v-if="item.compare2!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare2<0}" ></i>{{item.compare2|compare}}%</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===1"><i  v-if="item.compare1!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare1<0}" ></i>{{item.compare1|compare}}%</div>
+                  <div class="fl lh70 W-20 c-959 fs26" v-if="title===2"><i  v-if="item.compare3!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare3<0}" ></i>{{item.compare3|compare}}%</div>
+              </li>
+
+              <div  class="unit bottom-btn w-100 c-3395FF" v-if="!(listdata.length>=bottomBtnData.len)"></div>
+              <!--点击展开与收缩列表开始  v-if="unitList.list.length>bottomBtnData.len"-->
+              <div class="unit bottom-btn w-100 c-3395FF" @click.stop="accordion()"  v-if="listdata.length>=bottomBtnData.len">
+                  <span v-text="bottomBtnData.text" class="fs24"></span>
+                  <span class="iconfont fs18 icon-zhankaiquanbu unit" :class="{'rotate':!bottomBtnData.bSign}"></span>
+              </div>
+              <!--点击展开与收缩列表结束-->
+
+          </ul>
+      </div>
+      <div  v-show="buttonNavigation===1">
+          <div class="clearfix unit pt30  pb20 mb0 light-bg text-center bbDDDEE3">
+              <div class="fl W-25 b0 c-000 fs26" >月份</div>
+              <div class="fl W-25 b0 c-000 fs26" >本年用量</div>
+              <div class="fl W-25 b0 c-000 fs26" v-if="title===0">上年同期用量</div>
+              <div class="fl W-25 b0 c-000 fs26" v-if="title===1">上期用量</div>
+              <div class="fl W-25 b0 c-000 fs26" v-if="title===2">年平均用量</div>
+              <div class="fl W-25 b0 c-000 fs26" v-if="title===0">同比</div>
+              <div class="fl W-25 b0 c-000 fs26" v-if="title===1">环比</div>
+              <div class="fl W-25 b0 c-000 fs26" v-if="title===2">平均比</div>
+          </div>
+          <ul>
+              <li class=" h70 lh70 unit text-center bt0 bl0 br0 bbDDDEE3 m0" v-for="(item,index) in listdata" >
+                  <div class="fl lh70 h15 W-25 fs26">{{item.month}}</div>
+                  <div class="fl lh70 h15 W-25 fs26">{{item.thisYear|type2}}</div>
+                  <div class="fl lh70 h15 W-25 fs26" v-if="title===0">{{item.lastYear|type2}}</div>
+                  <div class="fl lh70 h15 W-25 fs26" v-if="title===1">{{item.lastMonth|type2}}</div>
+                  <div class="fl lh70 h15 W-25 fs26" v-if="title===2">{{item.avgYear|type2}}</div>
+                  <div class="fl lh70 h15 W-25 fs26" v-if="title===0"><i v-if="item.anRate!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.anRate<0}" v-if="true"></i>{{item.anRate|compare2}}%</div>
+                  <div class="fl lh70 h15 W-25 fs26" v-if="title===1"><i v-if="item.momRate!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.momRate<0}" v-if="true"></i>{{item.momRate|compare2}}%</div>
+                  <div class="fl lh70 h15 W-25 fs26" v-if="title===2"><i v-if="item.avgRate!==0" class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.avgRate<0}" v-if="true"></i>{{item.avgRate|compare2}}%</div>
+              </li>
+          </ul>
+          <div class="unit bottom-btn w-100 c-3395FF" style="height: 1.5rem!important;"></div>
+      </div>
+
+      <!-- 插件-->
+      <div class="yj_selmode" v-show="yj_selMode == true">
+          <div class="mask">
+              <div class="cont">
+                  <div class="yj_title">预警设置</div>
+                  <div class="yj_selClass">
+                      <span :class="yj_active(1)" @click="yj_change(1.1,1)">1.1倍</span>
+                      <span :class="yj_active(2)" @click="yj_change(1.2,2)">1.2倍</span>
+                      <span :class="yj_active(3)" @click="yj_change(1.3,3)">1.3倍</span>
+                  </div>
+                  <div class="yj_selClass">
+                      <span :class="yj_active(4)" @click="yj_change(2.0,4)">2.0倍</span>
+                      <input :class="yj_active(5)" v-model="yj_result_cache.num" type="text"  placeholder="其他倍" id="multiplying" />
+                  </div>
+                  <div class="yj_sub">
+                      <span @click="yj_click">取消</span>
+                      <span @click="yj_done()">确定</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- end-->
+  </div>
+  <div class="fixed-bottom">
+    <!-- 底部  -->
+    <div class="bot-nav" >
+      <div class="button button2" :class="{'active':buttonNavigation===0||buttonNavigation===2}"  @click.stop="botNavigation(0)" ><i class="iconfont icon-xuanfutubiao-zuzhi"></i>组织</div>
+      <div class="button button2" :class="{'active':buttonNavigation===1}"  @click.stop="botNavigation(1)" ><i class="iconfont icon-shijian"></i>时间</div>
+    </div>
+  </div>
+</div>

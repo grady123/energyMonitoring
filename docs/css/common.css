@@ -1,0 +1,197 @@
+/*公共margin*/
+.ma{margin: auto!important;}
+.m0{margin:0 !important}
+.m5{margin:0.05rem !important}
+.m10{margin:.10rem !important}
+.m15{margin:.15rem !important}
+.m20{margin:.20rem !important}
+.m30{margin:.30rem !important}
+.mt0{margin-top:0 !important}
+.mt5{margin-top:.05rem !important}
+.mt7{margin-top:.07rem !important}
+.mt10{margin-top:.10rem !important}
+.mt14{margin-top:.14rem !important}
+.mt15{margin-top:.15rem !important}
+.mt20{margin-top:.20rem !important}
+.mt30{margin-top:.30rem !important}
+.mt60{margin-top:.60rem !important}
+.mt48{margin-top:.48rem !important}
+.mt96{margin-top:.96rem !important}
+.mr0{margin-right:0 !important}
+.mr5{margin-right:.05rem !important}
+.mr6{margin-right:.06rem !important}
+.mr12{margin-right:.12rem !important}
+.mr10{margin-right:.10rem !important}
+.mr15{margin-right:.15rem !important}
+.mr20{margin-right:.20rem !important}
+.mr30{margin-right:.30rem !important}
+.mr50{margin-right:.50rem !important}
+.mr60{margin-right:.60rem !important}
+.mr70{margin-right:.70rem !important}
+.mr75{margin-right:.75rem !important}
+.mr80{margin-right:.80rem !important}
+.mr90{margin-right:.90rem !important}
+.mr1000{margin-right:1rem !important}
+.mr140{margin-right:1.4rem !important}
+.mr120{margin-right:1.2rem !important}
+.mr190{margin-right: 1.9rem!important;}
+.mb0{margin-bottom:0!important}
+.mb5{margin-bottom:.05rem !important}
+.mb10{margin-bottom:.10rem !important}
+.mb15{margin-bottom:.15rem !important}
+.mb20{margin-bottom:.20rem !important}
+.mb30{margin-bottom:.30rem !important}
+.ml0{margin-left:0 !important}
+.ml5{margin-left:.05rem !important}
+.ml10{margin-left:.10rem !important}
+.ml70{margin-left:.70rem !important}
+/*.ml15{margin-left:15rem !important}*/
+.ml20{margin-left:.20rem !important}
+.ml25{margin-left:.25rem !important}
+.ml30{margin-left:.30rem !important}
+
+/*宽度*/
+.W-5{width:5%;}
+.W-8{width:8%;}
+.W-10{width:10%;}
+.W-13{width:13%;}
+.W-14{width:14%;}
+.W-15{width:15%;}
+.W-16{width:16%;}
+.W-165{width:16.5%;}
+.W-17{width:17%;}
+.W-20{width:20%;}
+.W-25{width:25%;}
+.W-33{width:33%;}
+.W-34{width:34%;}
+.W-50{width:50%;}
+.W-100{width:100%;}
+/*行高*/
+.lh10{  line-height: .10rem!important;}
+.lh15{  line-height: .15rem!important;}
+.lh18{  line-height: .18rem!important;}
+.lh36{  line-height: .36rem!important;}
+.lh20{  line-height: .20rem!important;}
+.lh30{  line-height: .30rem!important;}
+.lh70{  line-height: .70rem!important;}
+/*高*/
+.h70{  height: 0.7rem !important;}
+.h45{  height: 0.45rem !important;}
+/*公共padding*/
+.p0{padding:0 !important;}
+.p5{padding:.05rem !important}
+.p10{padding:.10rem !important}
+.p12{padding:.12rem !important}
+.p15{padding:.15rem !important}
+.p20{padding:.20rem !important}
+.p40{padding:.40rem !important}
+.p30{padding:.30rem !important}
+.pt0{padding-top:0 !important}
+.pt5{padding-top:.05rem !important}
+.pt6{padding-top:.06rem !important}
+.pt10{padding-top:.10rem !important}
+.pt15{padding-top:.15rem !important}
+.pt20{padding-top:.20rem !important}
+.pt25{padding-top:.25rem !important}
+.pt30{padding-top:.30rem !important}
+.pr0{padding-right:0 !important}
+.pr5{padding-right:.05rem !important}
+.pr10{padding-right:.10rem !important}
+.pr15{padding-right:.15rem !important}
+.pr20{padding-right:.20rem !important}
+.pr30{padding-right:.30rem !important}
+.pr60{padding-right:.60rem !important}
+.pb0{padding-bottom:0 !important}
+.pb5{padding-bottom:.04rem !important}
+.pb7{padding-bottom:.07rem !important}
+.pb10{padding-bottom:.10rem !important}
+.pb15{padding-bottom:.15rem !important}
+.pb20{padding-bottom:.20rem !important}
+.pb25{padding-bottom:.25rem !important}
+.pb30{padding-bottom:.30rem !important}
+.pl0{padding-left:0 !important}
+.pl5{padding-left:.05rem !important}
+.pl10{padding-left:.10rem !important}
+.pl15{padding-left:.15rem !important}
+.pl20{padding-left:.20rem !important}
+.pl30{padding-left:.30rem !important}
+.pl60{padding-left:.60rem !important}
+.pt10lr0{padding: .10rem 0 !important;}
+/*公共字体*/
+.fs10{font-size:.10rem!important}
+.fs11{font-size:.11rem!important}
+.fs12{font-size:.12rem!important}
+.fs13{font-size:.13rem!important}
+.fs14{font-size:.14rem!important}
+.fs15{font-size:.15rem!important}
+.fs16{font-size:.16rem!important}
+.fs22{font-size:.22rem!important}
+.fs26{font-size:.26rem!important}
+.fs17{font-size:.17rem!important}
+.fs18{font-size:.18rem!important}
+.fs20{font-size:.20rem!important}
+.fs24{font-size:.24rem!important}
+.fs28{font-size:.28rem!important}
+.fs29{font-size:.29rem!important}
+.fs32{font-size:.32rem!important}
+.normal{font-weight:normal}
+/*公共边框*/
+.b0{border:0 !important;}
+.bt0{border-top:0}
+.br0{border-right:0}
+.bb0{border-bottom:0}
+.bb1{border-bottom:1px}
+.bl0{border-left:0}
+
+/*绿色*/
+.bt3BBA80{border-top:1px solid #F87F6E;}
+.btDDDEE3{border-top:1px solid #DDDEE3;}
+.bbDDDEE3{border-bottom:1px solid #DDDEE3;}
+/*公共样式*/
+.block{display:block}
+.hide{display:none !important;}
+.iblock{display:inline-block!important}
+.vm{vertical-align:middle}
+.tover{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr{position:relative}
+.pa{position:absolute}
+.pz{position:relative;z-index:9999}
+.flex{display:flex;align-items:center}
+/*公共浮动样式*/
+.fr{float:right}
+.fl{float:left}
+.clearfix{clear:both;overflow:hidden}
+.clearzoom{*zoom:1;}
+.clearfix:after{content:".";visibility:hidden;display:block;height:0;clear:both}
+.hidden{visibility:hidden}
+.bold{font-weight: bold !important;}
+
+/*公共color*/
+.c-000{color:#000!important}
+.c-222{color:#000!important}
+.c-333{color:#333!important}
+.c-999{color:#999!important}
+.c-ccc{color:#ccc!important}
+.c-fff{color:#fff!important}
+.c-95{color:#95989F!important}
+.c-777{color:#777E8C!important}
+.c-6DC{color:#6DC56E!important}
+.c-F99{color:#F99636!important}
+.c-339{color:#3395FF!important}
+.c-959{color:#95989F!important}
+
+/*蓝色*/
+.c-395{color:#3395FF!important}
+.c-3395FF{color:#3395FF!important}
+.c-fff600{color:#FFF600!important}
+.c-d8ffed{color:#D8FFED!important}
+.bor-active{border-bottom:.02rem solid #3395FF}
+/*字体*/
+.text-center{text-align: center!important;}
+.text-left{text-align: left!important;}
+.text-right{text-align: right!important;}
+/*头尾层级*/
+.fixed-top,.fixed-bottom{
+    z-index: 99!important;
+}
+.bs {box-sizing: border-box;}

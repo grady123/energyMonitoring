@@ -1,0 +1,72 @@
+<div class="fixed-warp unit_two basis energy_two" id="energyTwo">
+    <!--头-->
+    <div class="fixed-top">
+        <div class="fixed-top">
+            <div class="mobile-top-nag">
+                <div class="nag-button"><i class="iconfont icon-fanhui go1" ></i><a href="/"><i class="iconfont icon-guanbi "></i></a></div>
+                能耗监控</div>
+        </div>
+    </div>
+    <div class="fixed">
+        <div class="main" :class="{'green': params.meterType=='paytype_2'}">
+            <div class="top">
+                <span>{{JsonData_tmp.data.info.meterCode}}</span>
+                <span class="fr">{{params.date.split('-')[0]}}-{{params.date.split('-')[1]}}</span>
+                <p class="pt15">{{JsonData_tmp.data.info.meterAddress}}</p>
+                <div class="masthead">
+                    <span>本月用量</span>
+                    <span>{{JsonData_tmp.data.info.monthDosage}}</span>
+                    <span>{{params.meterType == 'paytype_1' ? '吨':'度'}}</span>
+                </div>
+                <div class="column">
+                <span class="pl0">本月&nbsp{{JsonData_tmp.data.info.monthDegree || 0}}</span>
+                <span>上月&nbsp{{JsonData_tmp.data.info.lastMonthDegree||0}}</span>
+                <span>截止日期&nbsp{{JsonData_tmp.data.info.date}}</span>
+                </div>
+            </div>
+            <div class="bottom" :class="{'green': params.meterType=='paytype_2'}">
+                <div class="module" :class="{'green': params.meterType=='paytype_2'}">
+                    <p>{{JsonData_tmp.data.info.sumYear}}</p>
+                    <p class="pt10">本年累计</p>
+                </div>
+                <div class="module" :class="{'green': params.meterType=='paytype_2'}">
+                    <p>{{JsonData_tmp.data.info.avgYear}}</p>
+                    <p class="pt10">本年平均</p>
+                </div>
+                <div class="module" :class="{'green': params.meterType=='paytype_2'}">
+                    <p>{{Math.abs((JsonData_tmp.data.info.compare2 * 100 || 0).toFixed(1))}}<i class="iconfont icon-Decline  " :class="{'rotate ':JsonData_tmp.data.info.compare2<0}" v-if="JsonData_tmp.data.info.compare2!=null & JsonData_tmp.data.info.compare2!=0"></i></p>
+                    <p class="pt10">本月同比%</p>
+                </div>
+                <div class="module" :class="{'green': params.meterType=='paytype_2'}">
+                    <p>{{Math.abs((JsonData_tmp.data.info.compare1 * 100 || 0).toFixed(1))}}<i class="iconfont icon-Decline  " :class="{'rotate ':JsonData_tmp.data.info.compare1<0}" v-if="JsonData_tmp.data.info.compare1!=null & JsonData_tmp.data.info.compare1!=0"></i></p>
+                    <p class="pt10">本月环比%</p>
+                </div>
+            </div>
+        </div>
+        <div   class="pay_nhCharts-box pt20"  >
+            <div  class="charts1"  id="energyChartsTwo" ></div>
+        </div>
+
+        <div >
+            <div class="clearfix unit pt30  pb20 mb0 light-bg text-center bbDDDEE3">
+                <div class="fl W-20 b0 c-000 fs26" >月份</div>
+                <div class="fl W-20 b0 c-000 fs26" >{{params.meterType == 'paytype_1' ? '本年用水量':'本年用电量'}}</div>
+                <div class="fl W-20 b0 c-000 fs26" >{{params.meterType == 'paytype_1' ? '上年用水量':'上年用电量'}}</div>
+                <div class="fl W-20 b0 c-000 fs26"  >同比</div>
+                <div class="fl W-20 b0 c-000 fs26"  >环比</div>
+
+            </div>
+            <ul >
+                <li class=" h70 lh70 unit text-center bt0 bl0 br0 bbDDDEE3 m0" v-for="(item,index) in JsonData_tmp.data.data" >
+                    <div class="fl lh70 h15 W-20 fs26">{{item.monthNo - 0 + '月'}}</div>
+                    <div class="fl lh70 h15 W-20 fs26">{{item.monthDosage}}</div>
+                    <div class="fl lh70 h15 W-20 fs26">{{item.lastYearMonthDosage}}</div>
+                    <div class="fl lh70 h15 W-20 fs26"><i class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare2<0}" v-if="item.compare2!=0 &item.compare2!= null"></i>{{Math.abs((item.compare2 * 100 || 0).toFixed(1))}}%</div>
+                    <div class="fl lh70 h15 W-20 fs26"><i class="iconfont icon-Decline fs26 c-F99" :class="{'rotate c-339':item.compare1<0}" v-if="item.compare1!=0 & item.compare1!=null"></i>{{Math.abs((item.compare1 * 100 || 0).toFixed(1))}}%</div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
